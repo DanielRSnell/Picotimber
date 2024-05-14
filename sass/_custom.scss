@@ -1,0 +1,551 @@
+/* ============  CUSTOM.SCSS: ADD HERE YOUR OWN PROJECT'S  SCSS OR plain CSS CODE. ============ 
+/* ============  THEN, DONT' FORGET TO RECOMPILE IN ORDER TO REBUILD YOUR CSS BUNDLE. ============ 
+ 
+
+WHAT DO I NEED TO KNOW BEFORE WORKING
+
+    This is the general process to make visual customizations:
+
+    1. Edit this file, add your own CSS/SCSS code, save the file.
+
+    2. View the page in your browser, while logged in as administrator.
+    
+    3. Click the "SASS" symbol on the WP admin bar on the page top.
+    
+    Compiling will start, and a feedback window will be shown.
+
+    The /sass/main.scss file will be compiled to a static CSS.
+    
+    This CSS is the only one that the theme enqueues.
+
+    As a side note,  the file static CSS name is customizable as well - see functions.php
+
+IMPORTANT INFORMATION  -  IF YOU DON'T WANT TO REINVENT THE WHEEL: 
+
+    Before adding CSS, try to see if there isn't already an utility class for that:
+    please take your time to understand and study how Bootstrap works.
+
+    Many times you DON'T NEED to write custom CSS.
+    
+    Try using Bootstrap classes first.
+
+    It can save you a lot of time,
+    eg. to standardize project colors, or fully customize typography.
+
+    First of all, have a ride in the WordPress Customizer.
+    Set your project variables,
+    So that simple classes like text-primary or bg-primary will refer to your brand color.
+    
+    Take your time to learn to use Bootstrap 5 classes and utility classes especially.
+    
+    Documentation: https://getbootstrap.com/docs/5.3/utilities/background/
+
+    To explore things further, please note that picostrap actually implements also BootstrapNinja,
+    a small set of SCSS files that supercharges Bootstrap, mostly using it's own Utilities API, or custom SASS
+    scripts, to create some more utility classes.
+    We built BootstrapNinja with the spirit of offering developers a richer suitcase of reliable tools, supercharging Bootstrap wi
+    with some ideas inspired by Tailwind - and our own experience.
+
+    Please take your time to learn using these classes.
+
+    Documentation: https://bootstrap.ninja/ninjabootstrap/
+
+IMPORTANT NOTE REGARDING PATHS FOR REFERENCING ELEMENTS IN THE THEME FOLDER
+    
+    Please prepend ../ in the path, as the rendered CSS
+    that is executed from the browser is in the /css-output/ theme subfolder    
+
+
+************************************************		                        */
+
+/* ============  SOME USEFUL CSS SNIPPETS YOU MIGHT NEED ============ */
+
+//a demo statement - uncomment me as a test to see page turn red and blush. Compile afterwards!
+//body { background: red; opacity: 0.4;border:5px solid yellow}  
+
+//open menus on hover
+//.dropdown:hover>.dropdown-menu { display: block;}
+
+// DETECT IF PAGE HAS SCROLLED
+// From the Customizer, enable the "Scroll Detection" feature to be able to use the classes:
+
+//body.scroll-position-at-top  {background:lime}
+//body.scroll-position-not-at-top {background:red}
+
+ 
+// HOW TO INCLUDE A CUSTOM FONT
+//1. Upload the .woff2 font file in the /fonts/ folder 
+//2. Uncomment/Adjust and use the code snippet below 
+//3. Open the Customizer and declare the font in the "Font Family Base" / "Headings Font Family" field
+
+// include custom font
+//@font-face {
+//  font-family: 'Playfair Display';
+//  src: url('../fonts/playfair-display.woff2') format('woff2');
+//}
+ 
+/* ============  WRITE YOUR PROJECT CODE BELOW ============ */
+
+:root {
+    --font-weight-1: 100;
+    --font-weight-2: 200;
+    --font-weight-3: 300;
+    --font-weight-4: 400;
+    --font-weight-5: 500;
+    --font-weight-6: 600;
+    --font-weight-7: 700;
+    --font-weight-8: 800;
+    --font-weight-9: 900;
+    --font-lineheight-00: 0.95;
+    --font-lineheight-0: 1.1;
+    --font-lineheight-1: 1.25;
+    --font-lineheight-2: 1.375;
+    --font-lineheight-3: 1.5;
+    --font-lineheight-4: 1.75;
+    --font-lineheight-5: 2;
+    --font-letterspacing-0: -0.05em;
+    --font-letterspacing-1: 0.025em;
+    --font-letterspacing-2: 0.05em;
+    --font-letterspacing-3: 0.075em;
+    --font-letterspacing-4: 0.15em;
+    --font-letterspacing-5: 0.5em;
+    --font-letterspacing-6: 0.75em;
+    --font-letterspacing-7: 1em;
+    --font-size-00: 0.5rem;
+    --font-size-0: 0.75rem;
+    --font-size-1: 1rem;
+    --font-size-2: 1.1rem;
+    --font-size-3: 1.25rem;
+    --font-size-4: 1.5rem;
+    --font-size-5: 2rem;
+    --font-size-6: 2.5rem;
+    --font-size-7: 3rem;
+    --font-size-8: 3.5rem;
+    --font-size-fluid-0: clamp(0.75rem, 2vw, 1rem);
+    --font-size-fluid-1: clamp(1rem, 4vw, 1.5rem);
+    --font-size-fluid-2: clamp(1.5rem, 6vw, 2.5rem);
+    --font-size-fluid-3: clamp(2rem, 9vw, 3.5rem);
+    --size-fluid-1: clamp(0.5rem, 1vw, 1rem);
+    --size-fluid-2: clamp(1rem, 2vw, 1.5rem);
+    --size-fluid-3: clamp(1.5rem, 3vw, 2rem);
+    --size-fluid-4: clamp(2rem, 4vw, 3rem);
+    --size-fluid-5: clamp(4rem, 5vw, 5rem);
+    --size-fluid-6: clamp(5rem, 7vw, 7.5rem);
+    --size-fluid-7: clamp(7.5rem, 10vw, 10rem);
+    --size-fluid-8: clamp(10rem, 20vw, 15rem);
+    --size-fluid-9: clamp(15rem, 30vw, 20rem);
+    --size-fluid-10: clamp(20rem, 40vw, 30rem);
+    --shadow-color: 220 3% 15%;
+    --shadow-strength: 1%;
+    --inner-shadow-highlight: inset 0 -0.5px 0 0 #fff, inset 0 0.5px 0 0 rgba(0, 0, 0, 0.067);
+    --shadow-1: 0 1px 2px -1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
+    --shadow-2: 0 3px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 7px 14px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
+    --shadow-3: 0 -1px 3px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
+        0 1px 2px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
+        0 2px 5px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
+        0 4px 12px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+        0 12px 15px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));
+    --shadow-4: 0 -2px 5px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
+        0 1px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 2px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
+        0 9px 9px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+        0 16px 16px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%));
+    --shadow-5: 0 -1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
+        0 2px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 10px 10px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
+        0 20px 20px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+        0 40px 40px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));
+    --shadow-6: 0 -1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)),
+        0 3px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 7px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+        0 12px 10px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)),
+        0 22px 18px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)),
+        0 41px 33px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%)),
+        0 100px 80px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%));
+    --inner-shadow-0: inset 0 0 0 1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
+    --inner-shadow-1: inset 0 1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%)),
+        var(--inner-shadow-highlight);
+    --inner-shadow-2: inset 0 1px 4px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%)),
+        var(--inner-shadow-highlight);
+    --inner-shadow-3: inset 0 2px 8px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%)),
+        var(--inner-shadow-highlight);
+    --inner-shadow-4: inset 0 2px 14px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%)),
+        var(--inner-shadow-highlight);
+    --ratio-square: 1;
+    --ratio-landscape: 4/3;
+    --ratio-portrait: 3/4;
+    --ratio-widescreen: 16/9;
+    --ratio-ultrawide: 18/5;
+    --ratio-golden: 1.618/1;
+    --border-size-1: 1px;
+    --border-size-2: 2px;
+    --border-size-3: 5px;
+    --border-size-4: 10px;
+    --border-size-5: 25px;
+    --radius-1: 2px;
+    --radius-2: 5px;
+    --radius-3: 1rem;
+    --radius-4: 2rem;
+    --radius-5: 4rem;
+    --radius-6: 8rem;
+    --radius-drawn-1: 255px 15px 225px 15px/15px 225px 15px 255px;
+    --radius-drawn-2: 125px 10px 20px 185px/25px 205px 205px 25px;
+    --radius-drawn-3: 15px 255px 15px 225px/225px 15px 255px 15px;
+    --radius-drawn-4: 15px 25px 155px 25px/225px 150px 25px 115px;
+    --radius-drawn-5: 250px 25px 15px 20px/15px 80px 105px 115px;
+    --radius-drawn-6: 28px 100px 20px 15px/150px 30px 205px 225px;
+}
+
+.font-weight-1 {
+    font-weight: var(--font-weight-1);
+}
+
+.font-weight-2 {
+    font-weight: var(--font-weight-2);
+}
+
+.font-weight-3 {
+    font-weight: var(--font-weight-3);
+}
+
+.font-weight-4 {
+    font-weight: var(--font-weight-4);
+}
+
+.font-weight-5 {
+    font-weight: var(--font-weight-5);
+}
+
+.font-weight-6 {
+    font-weight: var(--font-weight-6);
+}
+
+.font-weight-7 {
+    font-weight: var(--font-weight-7);
+}
+
+.font-weight-8 {
+    font-weight: var(--font-weight-8);
+}
+
+.font-weight-9 {
+    font-weight: var(--font-weight-9);
+}
+
+.font-lineheight-00 {
+    line-height: var(--font-lineheight-00);
+}
+
+.font-lineheight-0 {
+    line-height: var(--font-lineheight-0);
+}
+
+.font-lineheight-1 {
+    line-height: var(--font-lineheight-1);
+}
+
+.font-lineheight-2 {
+    line-height: var(--font-lineheight-2);
+}
+
+.font-lineheight-3 {
+    line-height: var(--font-lineheight-3);
+}
+
+.font-lineheight-4 {
+    line-height: var(--font-lineheight-4);
+}
+
+.font-lineheight-5 {
+    line-height: var(--font-lineheight-5);
+}
+
+.font-letterspacing-0 {
+    letter-spacing: var(--font-letterspacing-0);
+}
+
+.font-letterspacing-1 {
+    letter-spacing: var(--font-letterspacing-1);
+}
+
+.font-letterspacing-2 {
+    letter-spacing: var(--font-letterspacing-2);
+}
+
+.font-letterspacing-3 {
+    letter-spacing: var(--font-letterspacing-3);
+}
+
+.font-letterspacing-4 {
+    letter-spacing: var(--font-letterspacing-4);
+}
+
+.font-letterspacing-5 {
+    letter-spacing: var(--font-letterspacing-5);
+}
+
+.font-letterspacing-6 {
+    letter-spacing: var(--font-letterspacing-6);
+}
+
+.font-letterspacing-7 {
+    letter-spacing: var(--font-letterspacing-7);
+}
+
+.font-size-fluid-0 {
+    font-size: var(--font-size-fluid-0);
+}
+
+.font-size-fluid-1 {
+    font-size: var(--font-size-fluid-1);
+}
+
+.font-size-fluid-2 {
+    font-size: var(--font-size-fluid-2);
+}
+
+.font-size-fluid-3 {
+    font-size: var(--font-size-fluid-3);
+}
+
+.size-fluid-1 {
+    font-size: var(--size-fluid-1);
+}
+
+.size-fluid-2 {
+    font-size: var(--size-fluid-2);
+}
+
+.size-fluid-3 {
+    font-size: var(--size-fluid-3);
+}
+
+.size-fluid-4 {
+    font-size: var(--size-fluid-4);
+}
+
+.size-fluid-5 {
+    font-size: var(--size-fluid-5);
+}
+
+.size-fluid-6 {
+    font-size: var(--size-fluid-6);
+}
+
+.size-fluid-7 {
+    font-size: var(--size-fluid-7);
+}
+
+.size-fluid-8 {
+    font-size: var(--size-fluid-8);
+}
+
+.size-fluid-9 {
+    font-size: var(--size-fluid-9);
+}
+
+.size-fluid-10 {
+    font-size: var(--size-fluid-10);
+}
+
+.shadow-1 {
+    box-shadow: var(--shadow-1);
+}
+
+.shadow-2 {
+    box-shadow: var(--shadow-2);
+}
+
+.shadow-3 {
+    box-shadow: var(--shadow-3);
+}
+
+.shadow-4 {
+    box-shadow: var(--shadow-4);
+}
+
+.shadow-5 {
+    box-shadow: var(--shadow-5);
+}
+
+.shadow-6 {
+    box-shadow: var(--shadow-6);
+}
+
+.inner-shadow-0 {
+    box-shadow: var(--inner-shadow-0);
+}
+
+.inner-shadow-1 {
+    box-shadow: var(--inner-shadow-1);
+}
+
+.inner-shadow-2 {
+    box-shadow: var(--inner-shadow-2);
+}
+
+.inner-shadow-3 {
+    box-shadow: var(--inner-shadow-3);
+}
+
+.inner-shadow-4 {
+    box-shadow: var(--inner-shadow-4);
+}
+
+.ratio-square {
+    aspect-ratio: var(--ratio-square);
+}
+
+.ratio-landscape {
+    aspect-ratio: var(--ratio-landscape);
+}
+
+.ratio-portrait {
+    aspect-ratio: var(--ratio-portrait);
+}
+
+.ratio-widescreen {
+    aspect-ratio: var(--ratio-widescreen);
+}
+
+.ratio-ultrawide {
+    aspect-ratio: var(--ratio-ultrawide);
+}
+
+.ratio-golden {
+    aspect-ratio: var(--ratio-golden);
+}
+
+.border-size-1 {
+    border-width: var(--border-size-1);
+}
+
+.border-size-2 {
+    border-width: var(--border-size-2);
+}
+
+.border-size-3 {
+    border-width: var(--border-size-3);
+}
+
+.border-size-4 {
+    border-width: var(--border-size-4);
+}
+
+.border-size-5 {
+    border-width: var(--border-size-5);
+}
+
+.radius-1 {
+    border-radius: var(--radius-1);
+}
+
+.radius-2 {
+    border-radius: var(--radius-2);
+}
+
+.radius-3 {
+    border-radius: var(--radius-3);
+}
+
+.radius-4 {
+    border-radius: var(--radius-4);
+}
+
+.radius-5 {
+    border-radius: var(--radius-5);
+}
+
+.radius-6 {
+    border-radius: var(--radius-6);
+}
+
+.radius-drawn-1 {
+    border-radius: var(--radius-drawn-1);
+}
+
+.radius-drawn-2 {
+    border-radius: var(--radius-drawn-2);
+}
+
+.radius-drawn-3 {
+    border-radius: var(--radius-drawn-3);
+}
+
+.radius-drawn-4 {
+    border-radius: var(--radius-drawn-4);
+}
+
+.radius-drawn-5 {
+    border-radius: var(--radius-drawn-5);
+}
+
+.radius-drawn-6 {
+    border-radius: var(--radius-drawn-6);
+}
+
+@media (min-width: 1536px) {
+    .svg-background {
+        height: 100%;
+        width: 50%;
+    }
+}
+
+.blur-sm {
+    filter: blur(4px);
+}
+
+.blur {
+    filter: blur(8px);
+}
+
+.blur-md {
+    filter: blur(12px);
+}
+
+.blur-lg {
+    filter: blur(16px);
+}
+
+.blur-xl {
+    filter: blur(24px);
+}
+
+.blur-2xl {
+    filter: blur(40px);
+}
+
+.blur-3xl {
+    filter: blur(64px);
+}
+
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+.backdrop-blur {
+    backdrop-filter: blur(8px);
+}
+
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+}
+
+.backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+}
+
+.backdrop-blur-2xl {
+    backdrop-filter: blur(40px);
+}
+
+.backdrop-blur-3xl {
+    backdrop-filter: blur(64px);
+}
